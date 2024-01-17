@@ -10,6 +10,7 @@ from sklearn.impute import SimpleImputer
 from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import OneHotEncoder,StandardScaler
 
+
 from src.exception import CustomException
 from src.logger import logging
 from src.utils import save_object
@@ -95,6 +96,7 @@ class DataTransformation:
             test_arr = np.c_[input_feature_test_arr, np.array(target_feature_test_df)]
 
             logging.info(f"Saved preprocessing object.")
+            
 
             save_object(
 
@@ -107,5 +109,7 @@ class DataTransformation:
                 test_arr,
                 self.data_transformation_config.preprocessor_obj_file_path,
             )
+    
+    
         except Exception as e:
             raise CustomException(e,sys)
